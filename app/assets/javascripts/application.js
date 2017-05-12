@@ -19,14 +19,37 @@
 
 $(document).ready(function() {
   $('#calendar').fullCalendar({
+    Boolean, default: true,
     // Header
     header: {
       left: 'prev,next today',
       center: 'title',
       right: 'month,agendaWeek,agendaDay'
     },
-    editable: true,
     selectable: true,
+    selectHelper: true,
+    select: function(start, end) {
+            modalbox(start.format(),end.format());
+    },
+    editable: true,
+    dayClick: function()
+    {
+        var eventTitle = prompt('Event Title:');
+        if (title)
+        {
+            var newEvent =  {
+                                title:  eventTitle,
+                                start:  '2015-01-01',
+                            };
+            $('#calendar').fullCalendar
+            (
+                'renderEvent',
+                newEvent,
+                true
+            );
+        }
+        $('#calendar').fullCalendar('unselect');
+    },
     // Google calendar integration
     googleCalendarApiKey: 'AIzaSyDJUsfPgT3h2nRdapCStzDDAQFUEsJyNzM',
        events: {

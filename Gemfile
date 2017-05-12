@@ -33,6 +33,17 @@ gem 'jbuilder', '~> 2.5'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
+gem 'materialize-sass'
+
+gem 'devise'
+gem 'google-api-client'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
+gem 'interactive_editor'
+gem 'awesome_print'
+gem 'hirb'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
