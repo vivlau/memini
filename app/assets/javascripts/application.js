@@ -28,32 +28,20 @@ $(document).ready(function() {
     },
     selectable: true,
     selectHelper: true,
-    select: function(start, end) {
-            modalbox(start.format(),end.format());
-    },
     editable: true,
-    dayClick: function()
-    {
-        var eventTitle = prompt('Event Title:');
-        if (title)
-        {
-            var newEvent =  {
-                                title:  eventTitle,
-                                start:  '2015-01-01',
-                            };
-            $('#calendar').fullCalendar
-            (
-                'renderEvent',
-                newEvent,
-                true
-            );
-        }
-        $('#calendar').fullCalendar('unselect');
-    },
-    // Google calendar integration
-    googleCalendarApiKey: 'AIzaSyDJUsfPgT3h2nRdapCStzDDAQFUEsJyNzM',
-       events: {
-           googleCalendarId: 'vivianwclau@gmail.com'
-         }
+    dayClick: function (date, jsEvent, view) {
+      console.log(date);
+      console.log(date.toISOString());
+      var clickedDay = date.format();
+      // var abc = prompt('Enter Title');
+      var starting = `${date.format()}`;
+      var ending = `${date.format()}`;
+      var newEvent = new Object();
+      // newEvent.title = abc;
+      newEvent.start = starting;
+      newEvent.end = ending;
+      newEvent.allDay = false;
+      $('#calendar').fullCalendar('renderEvent', newEvent);
+    }
   });
 });
