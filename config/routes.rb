@@ -6,5 +6,7 @@ Rails.application.routes.draw do
 
   resources :schedules
 
+  resources :events
+
   root 'welcome#index'
 end

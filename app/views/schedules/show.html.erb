@@ -3,3 +3,40 @@
     <div id="calendar"></div>
   </div>
 </div>
+
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Create Event</h4>
+    <br />
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input placeholder="Visit the Eiffel Tower" id="event_name" type="text" class="validate">
+            <label for="event_name">Event Name</label>
+          </div>
+          <div class="input-field col s12">
+            <input placeholder="Eiffel Tower, Paris, France" id="event_location" type="text" class="validate">
+            <label for="event_location">Location</label>
+          </div>
+          <div class="input-field col s12">
+            <textarea placeholder="The Eiffel Tower is an iconic landmark in Paris." id="event_description" class="materialize-textarea"></textarea>
+            <label for="event_description">About</label>
+          </div>
+          <div class="input-field col s12">
+            <select multiple>
+              <option value="" disabled selected>Categories</option>
+              <option value="1">Food</option>
+              <option value="2">Event</option>
+              <option value="3">Festival</option>
+              <option value="4">Museum</option>
+              <option value="5">Other</option>
+            </select>
+            <label>Categories</label>
+          </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

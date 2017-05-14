@@ -34,17 +34,27 @@
 .fc-day-header {
   background-color: #D2D7D3;
   border-style: none !important;
+  pointer-events: none;
 }
 
 .fc-state-highlight {
   opacity: 1.0;
+  z-index: -1;
 }
 
 .fc-highlight {
-  background-color: #2ecc71;
   opacity: 0.5;
+  z-index: -1;
 }
 
 .fc-day-number {
   color: #2c3e50;
+}
+
+.add-event-cal {
+  z-index: 900;
+}
+
+#modal1 {
+  overflow: visible;
 }
