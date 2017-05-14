@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'jquery-timepicker-rails'
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 
 gem 'materialize-sass'
 

@@ -13,11 +13,30 @@
 //= require jquery
 //= require jquery_ujs
 //= require moment
+//= require jquery.timepicker.js
+//= require Datepair
+//= require jquery.datepair.js
+//= require bootstrap-datepicker
 //= require fullcalendar
 //= require fullcalendar/gcal
 //= require_tree .
 
 $(document).ready(function() {
+  // initialize input widgets first
+  $('#datepairExample .time').timepicker({
+      'showDuration': true,
+      'timeFormat': 'g:ia'
+  });
+  $('#datepairExample .date').datepicker({
+      'format': 'yyyy-m-d',
+      'autoclose': true
+  });
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+  // initialize datepair
+  $('#datepairExample').datepair();
   $('select').material_select();
   $('#calendar').fullCalendar({
     Boolean, default: true,
@@ -69,7 +88,7 @@ $(document).ready(function() {
   $('.fc-day-number').each(function() {
     // Get current day
     var day = parseInt($(this).html());
-    $(this).html('<a class="modal-trigger" href="#modal1">+</a> ' + day);
+    $(this).html('<a class="modal-trigger" href="#modal1"><i class="tiny material-icons">add</i></a> ' + day);
     $('#modal1').modal({
        show:true,
        backdrop:'static'
