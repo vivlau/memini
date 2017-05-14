@@ -128,19 +128,24 @@ $(document).ready(function() {
     console.log(startISO);
     const endISO = makeEndDT.toISOString();
     console.log(endISO);
+    // EVENT DATA
+    const eventData =
+      {
+          title: $('#event_name').val(),
+          start: startISO,
+          end: endISO
+          // location: $('#event_location').val(),
+          // description: $('#event_description').val(),
+          // categories: $('#multCategories').val()
+      };
     // ALERT WHEN FORM SUBMITS
     alert("form submitted");
+    // RENDER EVENT ONTO CALENDAR
+    $("#calendar").fullCalendar('renderEvent', eventData, true);
+    $('#calendar').fullCalendar('addEventSource', eventData);
+    $('#calendar').fullCalendar('refetchEvents');
     // Resets form on submit
     $("form")[0].reset();
     return false;
-
-  //   $("#calendar").fullCalendar('renderEvent',
-  //       {
-  //           title: $('#event_name').val(),
-  //           start: new Date($('#start_time').val()),
-  //           end: new Date($('#end_time').val()),
-  //       },
-  //       true);
-
   };
 });
