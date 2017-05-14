@@ -18,17 +18,17 @@
           </div>
           <div id="datepair">
             <div class="input-field inline col s6 m3">
-              <input placeholder="Start Date" type="date" class="datepicker" />
+              <input placeholder="Start Date" type="date" class="datepicker" id="start_date" />
               <label for="datepair">Time and Date</label>
             </div>
             <div class="input-field inline col s6 m3" id="datepairExample">
-              <input placeholder="Start Time" type="text" class="time start" />
+              <input placeholder="Start Time" type="text" class="time start" id="start_time" />
             </div>
             <div class="input-field inline col s6 m3" id="datepairExample">
-              <input placeholder="End Date" type="date" class="datepicker" />
+              <input placeholder="End Date" type="date" class="datepicker" id="end_date" />
             </div>
             <div class="input-field inline col s6 m3" id="datepairExample">
-              <input placeholder="End Time" type="text" class="time end" />
+              <input placeholder="End Time" type="text" class="time end" id="end_time" />
             </div>
           </div>
           <div class="input-field col s12">
@@ -43,7 +43,7 @@
           </div>
           <div class="input-field col s12">
             <i class="material-icons prefix">label</i>
-            <select multiple>
+            <select id="multCategories" multiple>
               <option value="" disabled selected>Categories</option>
               <option value="1">Food</option>
               <option value="2">Event</option>
@@ -54,7 +54,7 @@
             <label>Categories</label>
           </div>
         </div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+        <button class="btn waves-effect waves-light" id="submitButton" type="submit" name="action" data-dismiss="modal">Submit</button>
       </form>
     </div>
   </div>

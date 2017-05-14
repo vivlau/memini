@@ -95,4 +95,52 @@ $(document).ready(function() {
     });
     $('#modal1').modal();
   });
+  $('#submitButton').on('click', function(e){
+    // We don't want this to act as a link so cancel the link action
+    e.preventDefault();
+
+    doSubmit();
+  });
+  function doSubmit(){
+    $("#modal1").modal('close');
+    console.log($('#event_name').val());
+    console.log($('#start_date').val());
+    console.log($('#start_time').val());
+    console.log($('#end_date').val());
+    console.log($('#end_time').val());
+    console.log($('#event_location').val());
+    console.log($('#event_description').val());
+    console.log($('#multCategories').val());
+    // DATE TIME CONVERSION
+    const startingDate = $('#start_date').val();
+    const convertStartDate = moment(startingDate, "DD-MMM-YYYY").format('MM-DD-YYYY');
+    const endingDate = $('#end_date').val();
+    const convertEndDate = moment(endingDate, "DD-MMM-YYYY").format('MM-DD-YYYY');
+    const startingTime = $(start_time).val();
+    const convertStartTime = moment(startingTime, "hh:mm a").format('HH:mm:ss');
+    const endingTime = $(end_time).val();
+    const convertEndTime = moment(endingTime, "hh:mm a").format('HH:mm:ss');
+    const startDateTime = convertStartDate + " " + convertStartTime;
+    const endDateTime = convertEndDate + " " + convertEndTime;
+    const makeStartDT = new Date(startDateTime);
+    const makeEndDT = new Date(endDateTime);
+    const startISO = makeStartDT.toISOString();
+    console.log(startISO);
+    const endISO = makeEndDT.toISOString();
+    console.log(endISO);
+    // ALERT WHEN FORM SUBMITS
+    alert("form submitted");
+    // Resets form on submit
+    $("form")[0].reset();
+    return false;
+
+  //   $("#calendar").fullCalendar('renderEvent',
+  //       {
+  //           title: $('#event_name').val(),
+  //           start: new Date($('#start_time').val()),
+  //           end: new Date($('#end_time').val()),
+  //       },
+  //       true);
+
+  };
 });
