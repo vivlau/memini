@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   resources :events
 
+  resources :yelps
+
   root 'welcome#index'
 end

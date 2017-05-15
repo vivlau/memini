@@ -42,9 +42,16 @@ gem 'google-api-client'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
+gem 'yelp', require: 'yelp'
+gem "js-routes"
+gem "http"
+
 gem 'interactive_editor'
 gem 'awesome_print'
 gem 'hirb'
+
+# security stuff
+gem "figaro"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

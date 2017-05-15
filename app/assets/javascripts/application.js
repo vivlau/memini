@@ -17,6 +17,7 @@
 //= require Datepair
 //= require jquery.datepair.js
 //= require bootstrap-datepicker
+//= require js-routes
 //= require fullcalendar
 //= require fullcalendar/gcal
 //= require_tree .
@@ -133,10 +134,10 @@ $(document).ready(function() {
       {
           title: $('#event_name').val(),
           start: startISO,
-          end: endISO
-          // location: $('#event_location').val(),
-          // description: $('#event_description').val(),
-          // categories: $('#multCategories').val()
+          end: endISO,
+          location: $('#event_location').val(),
+          description: $('#event_description').val(),
+          categories: $('#multCategories').val()
       };
     // ALERT WHEN FORM SUBMITS
     alert("form submitted");
