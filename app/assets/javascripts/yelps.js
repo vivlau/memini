@@ -52,23 +52,6 @@ function sendPosition(position) {
     "| Longitude: " + longitude);
 }
 
-//animate progress bar
-function animate(counter) {
-	var $bar = $('.progress-bar');
-
-	setTimeout(function () {
-		counter++;
-
-		var tmp  = counter.toString() + '%';
-		$bar.width(tmp);
-		$bar.text(tmp);
-
-		if (counter < 100) {
-			animate(counter);
-		}
-	}, 100)
-}
-
 //receives results of multiple searchs from Yelp
 //display manages only one search (restaurant, lunch, etc)
 //displayManager determines which search to send to display
