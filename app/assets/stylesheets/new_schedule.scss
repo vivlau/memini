@@ -10,7 +10,7 @@ body {
 
 .form-container {
   width: 100%;
-  background: url("map2.jpeg") 50% 0 no-repeat fixed;
+  background: url("roadblur.jpg") 50% 0 no-repeat fixed;
   background-size: cover;
   color: #fff;
   height: 100vh;
@@ -23,16 +23,16 @@ body {
 #msform {
 	width: 70%;
 	text-align: center;
-	position: relative;
-  left: 10%;
+	position: absolute;
+  left: 13%;
   margin: 0;
   padding: 0;
 }
 #msform fieldset {
-	background: white;
+	// background: white;
 	border: 0 none;
-	border-radius: 3px;
-	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	// border-radius: 3px;
+	// box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 	padding: 20px 30px;
 
 	box-sizing: border-box;
@@ -47,17 +47,17 @@ body {
 	display: none;
 }
 /*inputs*/
-#msform input, #msform textarea {
-	padding: 15px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	margin-bottom: 10px;
-	width: 100%;
-	box-sizing: border-box;
-	font-family: montserrat;
-	color: #2C3E50;
-	font-size: 13px;
-}
+// #msform input, #msform textarea {
+// 	padding: 15px;
+// 	border: 1px solid #ccc;
+// 	border-radius: 3px;
+// 	margin-bottom: 10px;
+// 	width: 100%;
+// 	box-sizing: border-box;
+// 	font-family: montserrat;
+// 	color: #2C3E50;
+// 	font-size: 13px;
+// }
 /*buttons*/
 #msform .action-button {
 	width: 100px;
@@ -67,15 +67,13 @@ body {
 	border: 0 none;
 	border-radius: 1px;
 	cursor: pointer;
-	padding: 10px 5px;
-	margin: 10px 5px;
 }
 #msform .action-button:hover, #msform .action-button:focus {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
 /*headings*/
 .fs-title {
-	font-size: 15px;
+	font-size: 20px;
 	text-transform: uppercase;
 	color: #2C3E50;
 	margin-bottom: 10px;
@@ -97,7 +95,7 @@ body {
 	list-style-type: none;
 	color: white;
 	text-transform: uppercase;
-	font-size: 9px;
+	font-size: 10px;
 	width: 33.33%;
 	float: left;
 	position: relative;
@@ -105,13 +103,14 @@ body {
 #progressbar li:before {
 	content: counter(step);
 	counter-increment: step;
-	width: 20px;
-	line-height: 20px;
+	height: 40px;
+	width: 40px;
+	line-height: 40px;
 	display: block;
-	font-size: 10px;
+	font-size: 20px;
 	color: #333;
 	background: white;
-	border-radius: 3px;
+	border-radius: 20px;
 	margin: 0 auto 5px auto;
 }
 /*progressbar connectors*/

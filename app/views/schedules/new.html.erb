@@ -9,12 +9,15 @@
   	</ul>
   	<!-- fieldsets -->
   	<fieldset>
-  		<h2 class="fs-title">Create your account</h2>
-  		<h3 class="fs-subtitle">This is step 1</h3>
-  		<input type="text" name="email" placeholder="Email" />
-  		<input type="password" name="pass" placeholder="Password" />
-  		<input type="password" name="cpass" placeholder="Confirm Password" />
-  		<input type="button" name="next" class="next action-button" value="Next" />
+  		<h2 class="fs-title">Where do you want to go?</h2>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">location_on</i>
+          <input placeholder="Tokyo, Japan" id="event_location" type="text" class="validate">
+          <label for="event_location">Location</label>
+        </div>
+      </div>
+  		<input class="next action-button" type="button" name="next" value="Next" />
   	</fieldset>
   	<fieldset>
   		<h2 class="fs-title">Social Profiles</h2>
@@ -37,3 +40,51 @@
   	</fieldset>
   </form>
 </div>
+
+<form class="col s12">
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">today</i>
+      <input placeholder="Visit the Eiffel Tower" id="event_name" type="text" class="validate">
+      <label for="event_name">Event Name</label>
+    </div>
+    <div id="datepair">
+      <div class="input-field inline col s6 m3">
+        <input placeholder="Start Date" type="date" class="datepicker" id="start_date" />
+        <label for="datepair">Time and Date</label>
+      </div>
+      <div class="input-field inline col s6 m3" id="datepairExample">
+        <input placeholder="Start Time" type="text" class="time start" id="start_time" />
+      </div>
+      <div class="input-field inline col s6 m3" id="datepairExample">
+        <input placeholder="End Date" type="date" class="datepicker" id="end_date" />
+      </div>
+      <div class="input-field inline col s6 m3" id="datepairExample">
+        <input placeholder="End Time" type="text" class="time end" id="end_time" />
+      </div>
+    </div>
+    <div class="input-field col s12">
+      <i class="material-icons prefix">location_on</i>
+      <input placeholder="Eiffel Tower, Paris, France" id="event_location" type="text" class="validate">
+      <label for="event_location">Location</label>
+    </div>
+    <div class="input-field col s12">
+      <i class="material-icons prefix">info</i>
+      <textarea placeholder="The Eiffel Tower is an iconic landmark in Paris." id="event_description" class="materialize-textarea"></textarea>
+      <label for="event_description">About</label>
+    </div>
+    <div class="input-field col s12">
+      <i class="material-icons prefix">label</i>
+      <select id="multCategories" multiple>
+        <option value="" disabled selected>Categories</option>
+        <option value="1">Food</option>
+        <option value="2">Event</option>
+        <option value="3">Festival</option>
+        <option value="4">Museum</option>
+        <option value="5">Other</option>
+      </select>
+      <label>Categories</label>
+    </div>
+  </div>
+  <button class="btn waves-effect waves-light" id="submitButton" type="submit" name="action" data-dismiss="modal">Submit</button>
+</form>
