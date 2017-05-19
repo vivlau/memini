@@ -1,0 +1,43 @@
+<div class="sign-up-background">
+  <div class="container">
+    <div class="sign-up-container">
+      <h2>Sign up</h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+            <input placeholder="johndoe@gmail.com" id="email" type="text" class="validate">
+            <label for="email">Email</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock</i>
+            <input placeholder="Password" id="password" type="password" class="validate">
+            <label for="password">Password <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br /></label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock</i>
+            <input placeholder="Password Confirmation" id="password_confirmation" type="password" class="validate">
+            <label for="password_confirmation">Password Confirmation</label>
+          </div>
+        </div>
+
+        <div class="input-field col s12">
+          <button class="btn waves-effect waves-light" id="submitButton" type="submit" name="action">Sign Up</button>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

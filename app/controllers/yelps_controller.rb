@@ -2,8 +2,8 @@ require "json"
 require "http"
 require "optparse"
 
-CLIENT_ID = "2JGL5WuW1RyPedUHSxnlng"
-CLIENT_SECRET = "SAFo8N7yRpmJRu7DieemX4bywEjFVK25NUzrhG1SExQW9qEWtTBnTW3fZMLHt0u4"
+CLIENT_ID = ENV['CLIENT_ID']
+CLIENT_SECRET = ENV['CLIENT_SECRET']
 
 # Constants, do not change these
 API_HOST = "https://api.yelp.com"
@@ -11,6 +11,11 @@ SEARCH_PATH = "/v3/businesses/search"
 BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business id to the path
 TOKEN_PATH = "/oauth2/token"
 GRANT_TYPE = "client_credentials"
+
+DEFAULT_BUSINESS_ID = "yelp-san-francisco"
+DEFAULT_TERM = "dinner"
+DEFAULT_LOCATION = "San Francisco, CA"
+SEARCH_LIMIT = 5
 
 class YelpsController < ApplicationController
   def bearer_token
@@ -33,40 +38,33 @@ class YelpsController < ApplicationController
 		"#{parsed['token_type']} #{parsed['access_token']}"
 	end
 
-  def search(term, lat, long)
-		url = "#{API_HOST}#{SEARCH_PATH}"
-		params = {
-			term: term,
-			latitude: lat,
-			longitude: long,
-			radius: 16000,
-			limit: 50,
-			price: "1,2",
-			open_now: true
-		}
+  def search(term, location)
+    url = "#{API_HOST}#{SEARCH_PATH}"
+    params = {
+      term: term,
+      location: 'Vancouver, BC',
+      limit: 50
+    }
 
-		response = HTTP.auth(bearer_token).get(url, params: params)
-		response.parse
-	end
+    response = HTTP.auth(bearer_token).get(url, params: params)
+    response.parse
+  end
 
-  def create
-		@@latitude = params[:latitude]
-		@@longitude = params[:longitude]
-	end
+  def business(business_id)
+    url = "#{API_HOST}#{BUSINESS_PATH}#{business_id}"
+
+    response = HTTP.auth(bearer_token).get(url)
+    response.parse
+  end
 
 	def show
-		@restaurant = search("Restaurant", @@latitude, @@longitude)
-		@breakfast = search("Breakfast", @@latitude, @@longitude)
-		@lunch = search("Lunch", @@latitude, @@longitude)
-		@dinner = search("Dinner", @@latitude, @@longitude)
-		@boba = search("Boba", @@latitude, @@longitude)
+		@restaurant = search("Brunch", location)
+    business_id = @restaurant['businesses'][0]['id']
+    @business = business(business_id)
 
 		@results = {
 			:restaurant => @restaurant,
-			:breakfast => @breakfast,
-			:lunch => @lunch,
-			:dinner => @dinner,
-			:boba => @boba
+      :business => @business
 		}
 
 		render json: @results

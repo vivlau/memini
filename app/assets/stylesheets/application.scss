@@ -22,6 +22,10 @@
  $primary-color: #D2D7D3 !default;
  $secondary-color: #26A65B;
 
+ .material-icons {
+   color: $secondary-color;
+ }
+
  @import 'materialize';
 
  @import url('https://fonts.googleapis.com/css?family=Montserrat');
