@@ -1,90 +1,80 @@
-<div class="form-container">
-  <!-- multistep form -->
-  <form id="msform">
-  	<!-- progressbar -->
-  	<ul id="progressbar">
-  		<li class="active">Account Setup</li>
-  		<li>Social Profiles</li>
-  		<li>Personal Details</li>
-  	</ul>
-  	<!-- fieldsets -->
-  	<fieldset>
-  		<h2 class="fs-title">Where do you want to go?</h2>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">location_on</i>
-          <input placeholder="Tokyo, Japan" id="event_location" type="text" class="validate">
-          <label for="event_location">Location</label>
+<div class="setup-container travel-form">
+  <div id="msform">
+    <%= form_for @schedule do |f| %>
+    	<!-- progressbar -->
+    	<ul id="progressbar">
+    		<li class="active">Account Setup</li>
+    		<li>Social Profiles</li>
+    		<li>Personal Details</li>
+    	</ul>
+    	<!-- fieldsets -->
+    	<%= field_set_tag do %>
+    		<h2 class="fs-title">Where do you want to go?</h2>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">location_on</i>
+            <%= f.text_field :location, :id => 'location', :placeholder => 'Tokyo, Japan' %>
+            <%= f.label :location, :id => 'label' %>
+          </div>
         </div>
-      </div>
-  		<input class="next action-button" type="button" name="next" value="Next" />
-  	</fieldset>
-  	<fieldset>
-  		<h2 class="fs-title">Social Profiles</h2>
-  		<h3 class="fs-subtitle">Your presence on the social network</h3>
-  		<input type="text" name="twitter" placeholder="Twitter" />
-  		<input type="text" name="facebook" placeholder="Facebook" />
-  		<input type="text" name="gplus" placeholder="Google Plus" />
-  		<input type="button" name="previous" class="previous action-button" value="Previous" />
-  		<input type="button" name="next" class="next action-button" value="Next" />
-  	</fieldset>
-  	<fieldset>
-  		<h2 class="fs-title">Personal Details</h2>
-  		<h3 class="fs-subtitle">We will never sell it</h3>
-  		<input type="text" name="fname" placeholder="First Name" />
-  		<input type="text" name="lname" placeholder="Last Name" />
-  		<input type="text" name="phone" placeholder="Phone" />
-  		<textarea name="address" placeholder="Address"></textarea>
-  		<input type="button" name="previous" class="previous action-button" value="Previous" />
-  		<input type="submit" name="submit" class="submit action-button" value="Submit" />
-  	</fieldset>
-  </form>
+        <button class="next form-button btn waves-effect waves-light" type="button" name="next" value="Next">Next</button>
+    	<% end %>
+    	<%= field_set_tag do %>
+    		<h2 class="fs-title">When do you want to go?</h2>
+        <div id="datepair" class="row">
+          <div class="input-field inline col s12 m6">
+            <i class="material-icons prefix">flight_takeoff</i>
+            <%= f.text_field :departure_date, :id => 'departure_date', :class => 'datepicker', :placeholder => 'Departure Date' %>
+            <%= f.label :departure, :id => 'label', :for => 'datepair' %>
+          </div>
+          <div class="input-field inline col s12 m6" id="datepairExample">
+            <%= f.text_field :departure_time, :id => 'departure_time', :class => 'time start', :placeholder => 'Departure Time' %>
+          </div>
+        </div>
+        <div id="datepair" class="row">
+          <div class="input-field inline col s12 m6" id="datepairExample">
+            <i class="material-icons prefix">flight_land</i>
+            <%= f.text_field :return_date, :id => 'return_date', :class => 'datepicker', :placeholder => 'Return Date' %>
+            <%= f.label :return, :id => 'label', :for => 'datepair' %>
+          </div>
+          <div class="input-field inline col s12 m6" id="datepairExample">
+            <%= f.text_field :return_time, :id => 'return_time', :class => 'time end', :placeholder => 'Return Time' %>
+          </div>
+        </div>
+        <button class="previous form-button btn waves-effect waves-light" type="button" name="previous" value="Previous">Previous</button>
+    		<button class="next form-button btn waves-effect waves-light" type="button" name="next" value="Next">Next</button>
+    	<% end %>
+    	<%= field_set_tag do %>
+    		<h2 class="fs-title">What kind of traveller are you?</h2>
+        <ul class="checkbox traveller_type">
+          <li>
+            <%= f.check_box :traveller_type, :id => 'foodie', :value => '1' %>
+            <label for="foodie">I love food and want to revolve my trip around trying the best bites a place has to offer!</label>
+          </li>
+          <li>
+            <%= f.check_box :traveller_type, :id => 'cafe', :value => '2' %>
+            <label for="cafe">I need a lot of down time at cafes. Find me cozy places to stop at.</label>
+          </li>
+          <li>
+            <%= f.check_box :traveller_type, :id => 'sleep-in', :value => '3' %>
+            <label for="sleep-in">I'm not a morning person. Let me sleep in.</label>
+          </li>
+          <li>
+            <%= f.check_box :traveller_type, :id => 'night-owl', :value => '4' %>
+            <label for="night-owl">I love partying till the wee hours! Find me things to do all through the night!</label>
+          </li>
+          <li>
+            <%= f.check_box :traveller_type, :id => 'family-friendly', :value => '5' %>
+            <label for="family-friendly">I have kids with me. Take me to more family-friendly places.</label>
+          </li>
+          <li>
+            <%= f.check_box :traveller_type, :id => 'everything', :value => '6' %>
+            <label for="everything">I need to try everything! Pack my schedule to the brim!</label>
+          </li>
+        </ul>
+    		<button class="previous form-button btn waves-effect waves-light" type="button" name="previous" value="Previous">Previous</button>
+        <%= f.submit class: 'submit form-button btn waves-effect waves-light' %>
+    	<% end %>
+    </div>
+  <% end %>
 </div>
-
-<form class="col s12">
-  <div class="row">
-    <div class="input-field col s12">
-      <i class="material-icons prefix">today</i>
-      <input placeholder="Visit the Eiffel Tower" id="event_name" type="text" class="validate">
-      <label for="event_name">Event Name</label>
-    </div>
-    <div id="datepair">
-      <div class="input-field inline col s6 m3">
-        <input placeholder="Start Date" type="date" class="datepicker" id="start_date" />
-        <label for="datepair">Time and Date</label>
-      </div>
-      <div class="input-field inline col s6 m3" id="datepairExample">
-        <input placeholder="Start Time" type="text" class="time start" id="start_time" />
-      </div>
-      <div class="input-field inline col s6 m3" id="datepairExample">
-        <input placeholder="End Date" type="date" class="datepicker" id="end_date" />
-      </div>
-      <div class="input-field inline col s6 m3" id="datepairExample">
-        <input placeholder="End Time" type="text" class="time end" id="end_time" />
-      </div>
-    </div>
-    <div class="input-field col s12">
-      <i class="material-icons prefix">location_on</i>
-      <input placeholder="Eiffel Tower, Paris, France" id="event_location" type="text" class="validate">
-      <label for="event_location">Location</label>
-    </div>
-    <div class="input-field col s12">
-      <i class="material-icons prefix">info</i>
-      <textarea placeholder="The Eiffel Tower is an iconic landmark in Paris." id="event_description" class="materialize-textarea"></textarea>
-      <label for="event_description">About</label>
-    </div>
-    <div class="input-field col s12">
-      <i class="material-icons prefix">label</i>
-      <select id="multCategories" multiple>
-        <option value="" disabled selected>Categories</option>
-        <option value="1">Food</option>
-        <option value="2">Event</option>
-        <option value="3">Festival</option>
-        <option value="4">Museum</option>
-        <option value="5">Other</option>
-      </select>
-      <label>Categories</label>
-    </div>
-  </div>
-  <button class="btn waves-effect waves-light" id="submitButton" type="submit" name="action" data-dismiss="modal">Submit</button>
-</form>

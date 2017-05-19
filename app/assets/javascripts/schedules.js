@@ -73,7 +73,21 @@ $(document).ready(function() {
 		});
 	});
 
-	$(".submit").click(function(){
-		return false;
-	})
+	// const startingDate = $('#start_date').val();
+	// const convertStartDate = moment(startingDate, "DD-MMM-YYYY").format('MM-DD-YYYY');
+	// const endingDate = $('#end_date').val();
+	// const convertEndDate = moment(endingDate, "DD-MMM-YYYY").format('MM-DD-YYYY');
+	// const startingTime = $(start_time).val();
+	// const convertStartTime = moment(startingTime, "hh:mm a").format('HH:mm:ss');
+	// const endingTime = $(end_time).val();
+	// const convertEndTime = moment(endingTime, "hh:mm a").format('HH:mm:ss');
+	// const startDateTime = convertStartDate + " " + convertStartTime;
+	// const endDateTime = convertEndDate + " " + convertEndTime;
+	// const makeStartDT = new Date(startDateTime);
+	// const makeEndDT = new Date(endDateTime);
+	// const startISO = makeStartDT.toISOString();
+	// console.log(startISO);
+	// const endISO = makeEndDT.toISOString();
+	// console.log(endISO);
+
 });
