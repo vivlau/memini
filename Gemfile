@@ -40,6 +40,7 @@ gem 'materialize-sass'
 gem 'devise'
 gem 'google-api-client'
 gem 'omniauth'
+gem 'omniauth-oauth2', '1.3.1'
 gem 'omniauth-google-oauth2'
 
 gem 'yelp', require: 'yelp'

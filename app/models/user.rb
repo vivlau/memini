@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :schedules, dependent: :nullify
+  has_many :events, dependent: :nullify
    # Include default devise modules. Others available are:
    # :confirmable, :lockable, :timeoutable and :omniauthable
    devise :database_authenticatable, :registerable,

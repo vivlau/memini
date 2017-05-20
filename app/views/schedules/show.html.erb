@@ -10,51 +10,46 @@
     <br />
     <div class="row">
       <form class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">today</i>
-            <input placeholder="Visit the Eiffel Tower" id="event_name" type="text" class="validate">
-            <label for="event_name">Event Name</label>
-          </div>
-          <div id="datepair">
-            <div class="input-field inline col s6 m3">
-              <input placeholder="Start Date" type="date" class="datepicker" id="start_date" />
-              <label for="datepair">Time and Date</label>
+        <%= form_for [@schedule, @event] do |f| %>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">today</i>
+              <%= f.text_field :event_name, :placeholder => "Visit the Eiffel Tower", :id => "event_name", :class => "validate" %>
+              <label for="event_name">Event Name</label>
             </div>
-            <div class="input-field inline col s6 m3" id="datepairExample">
-              <input placeholder="Start Time" type="text" class="time start" id="start_time" />
+            <div id="datepair">
+              <div class="input-field inline col s6 m3">
+                <%= f.text_field :start_date, :id => 'start_date', :class => 'datepicker', :placeholder => 'Start Date' %>
+                <label for="datepair">Time and Date</label>
+              </div>
+              <div class="input-field inline col s6 m3" id="datepairExample">
+                <%= f.text_field :start_time, :id => 'start_time', :class => 'time start', :placeholder => 'Start Time' %>
+              </div>
+              <div class="input-field inline col s6 m3" id="datepairExample">
+                <%= f.text_field :end_date, :id => 'end_date', :class => 'datepicker', :placeholder => 'End Date' %>
+              </div>
+              <div class="input-field inline col s6 m3" id="datepairExample">
+                <%= f.text_field :end_time, :id => 'end_time', :class => 'time end', :placeholder => 'End Time' %>
+              </div>
             </div>
-            <div class="input-field inline col s6 m3" id="datepairExample">
-              <input placeholder="End Date" type="date" class="datepicker" id="end_date" />
+            <div class="input-field col s12">
+              <i class="material-icons prefix">location_on</i>
+              <%= f.text_field :event_location, :placeholder => "Eiffel Tower, Paris, France", :id => "event_location", :class => "validate" %>
+              <label for="event_location">Location</label>
             </div>
-            <div class="input-field inline col s6 m3" id="datepairExample">
-              <input placeholder="End Time" type="text" class="time end" id="end_time" />
+            <div class="input-field col s12">
+              <i class="material-icons prefix">info</i>
+              <%= f.text_area(:event_description, :class => "materialize-textarea", :id => "event_description", :placeholder => "The Eiffel Tower is an iconic landmark in Paris.") %>
+              <label for="event_description">About</label>
+            </div>
+            <div class="input-field col s12">
+              <i class="material-icons prefix">label</i>
+              <%= f.select :categories, [ ["Food", "1"], ["Event", "2"], ["Festival", "3"], ["Museum", "4"], ["Other", "5"] ], {prompt: false}, {:multiple => true, :class => "form_input", :id => "multCategories"} %>
+              <label>Categories</label>
             </div>
           </div>
-          <div class="input-field col s12">
-            <i class="material-icons prefix">location_on</i>
-            <input placeholder="Eiffel Tower, Paris, France" id="event_location" type="text" class="validate">
-            <label for="event_location">Location</label>
-          </div>
-          <div class="input-field col s12">
-            <i class="material-icons prefix">info</i>
-            <textarea placeholder="The Eiffel Tower is an iconic landmark in Paris." id="event_description" class="materialize-textarea"></textarea>
-            <label for="event_description">About</label>
-          </div>
-          <div class="input-field col s12">
-            <i class="material-icons prefix">label</i>
-            <select id="multCategories" multiple>
-              <option value="" disabled selected>Categories</option>
-              <option value="1">Food</option>
-              <option value="2">Event</option>
-              <option value="3">Festival</option>
-              <option value="4">Museum</option>
-              <option value="5">Other</option>
-            </select>
-            <label>Categories</label>
-          </div>
-        </div>
-        <button class="btn waves-effect waves-light" id="submitButton" type="submit" name="action" data-dismiss="modal">Submit</button>
+          <button class="btn waves-effect waves-light" id="submitButton" type="submit" name="action" data-dismiss="modal">Submit</button>
+        <% end %>
       </form>
     </div>
   </div>

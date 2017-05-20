@@ -2,8 +2,8 @@ require "json"
 require "http"
 require "optparse"
 
-CLIENT_ID = ENV['CLIENT_ID']
-CLIENT_SECRET = ENV['CLIENT_SECRET']
+YELP_CLIENT_ID = ENV['YELP_CLIENT_ID']
+YELP_CLIENT_SECRET = ENV['YELP_CLIENT_SECRET']
 
 # Constants, do not change these
 API_HOST = "https://api.yelp.com"
@@ -22,13 +22,13 @@ class YelpsController < ApplicationController
 		# Put the url together
 		url = "#{API_HOST}#{TOKEN_PATH}"
 
-		raise "Please set your CLIENT_ID" if CLIENT_ID.nil?
-		raise "Please set your CLIENT_SECRET" if CLIENT_SECRET.nil?
+		raise "Please set your YELP_CLIENT_ID" if YELP_CLIENT_ID.nil?
+		raise "Please set your YELP_CLIENT_SECRET" if YELP_CLIENT_SECRET.nil?
 
 		# Build our params hash
 		params = {
-			client_id: CLIENT_ID,
-			client_secret: CLIENT_SECRET,
+			client_id: YELP_CLIENT_ID,
+			client_secret: YELP_CLIENT_SECRET,
 			grant_type: GRANT_TYPE
 		}
 

@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   devise_for :users,
     controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   get 'welcome/index'
 
-  resources :schedules
+  resources :schedules do
+    resources :events  
+  end
 
-  resources :events
+
 
   resources :yelps
 

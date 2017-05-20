@@ -42,6 +42,6 @@ class GoogleCalendarWrapper
       :headers => {'Content-Type' => 'application/json'})
   end
 
-  
+
 
 end
