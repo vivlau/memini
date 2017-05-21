@@ -1,0 +1,142 @@
+<div class="yelps-container">
+  <!-- BREAKFAST -->
+  <h1>Breakfast</h1>
+  <% business_array_length = @breakfast['businesses'].length(); %>
+  <% @breakfast['businesses'].each do |resto| %>
+    <h3><%= resto['name'] %></h3>
+    <img class="yelp-image" src="<%= resto['image_url'] %>"/>
+    <p>Reviews: <%= resto['review_count'] %></p>
+    <p>Rating: <%= resto['rating'] %></p>
+    <p>Coordinates: <%= resto['coordinates']['latitude'] %>, <%= resto['coordinates']['longitude'] %></p>
+    <p>Location: <%= resto['location']['display_address'][0] %>, <%= resto['location']['display_address'][1] %>, <%= resto['location']['display_address'][2] %></p>
+    <p>Phone: <%= resto['display_phone'] %></p>
+    <p>Price: <%= resto['price'] %></p>
+    <% details = business(resto['id']) %>
+    <p>Photos:</p> <img class="yelp-image" src="<%= details['photos'][1] %>" /><img class="yelp-image" src="<%= details['photos'][2] %>" />
+    <p>Hours:</p>
+    <ul>
+      <% details['hours'][0]['open'].each do |days_open| %>
+        <% if days_open['day'] == 0 %>
+          <p>Monday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 1 %>
+          <p>Tuesday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 2 %>
+          <p>Wednesday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 3 %>
+          <p>Thursday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 4 %>
+          <p>Friday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 5 %>
+          <p>Saturday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 6 %>
+          <p>Sunday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+  <!-- LUNCH -->
+  <h1>Lunch</h1>
+  <% business_array_length = @lunch['businesses'].length(); %>
+  <% @lunch['businesses'].each do |resto| %>
+    <h3><%= resto['name'] %></h3>
+    <img class="yelp-image" src="<%= resto['image_url'] %>"/>
+    <p>Reviews: <%= resto['review_count'] %></p>
+    <p>Rating: <%= resto['rating'] %></p>
+    <p>Coordinates: <%= resto['coordinates']['latitude'] %>, <%= resto['coordinates']['longitude'] %></p>
+    <p>Location: <%= resto['location']['display_address'][0] %>, <%= resto['location']['display_address'][1] %>, <%= resto['location']['display_address'][2] %></p>
+    <p>Phone: <%= resto['display_phone'] %></p>
+    <p>Price: <%= resto['price'] %></p>
+    <% details = business(resto['id']) %>
+    <p>Photos:</p> <img class="yelp-image" src="<%= details['photos'][1] %>" /><img class="yelp-image" src="<%= details['photos'][2] %>" />
+    <p>Hours:</p>
+    <ul>
+      <% details['hours'][0]['open'].each do |days_open| %>
+        <% if days_open['day'] == 0 %>
+          <p>Monday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 1 %>
+          <p>Tuesday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 2 %>
+          <p>Wednesday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 3 %>
+          <p>Thursday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 4 %>
+          <p>Friday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 5 %>
+          <p>Saturday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 6 %>
+          <p>Sunday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+  <!-- DINNER -->
+  <h1>Dinner</h1>
+  <% business_array_length = @dinner['businesses'].length(); %>
+  <% @dinner['businesses'].each do |resto| %>
+    <h3><%= resto['name'] %></h3>
+    <img class="yelp-image" src="<%= resto['image_url'] %>"/>
+    <p>Reviews: <%= resto['review_count'] %></p>
+    <p>Rating: <%= resto['rating'] %></p>
+    <p>Coordinates: <%= resto['coordinates']['latitude'] %>, <%= resto['coordinates']['longitude'] %></p>
+    <p>Location: <%= resto['location']['display_address'][0] %>, <%= resto['location']['display_address'][1] %>, <%= resto['location']['display_address'][2] %></p>
+    <p>Phone: <%= resto['display_phone'] %></p>
+    <p>Price: <%= resto['price'] %></p>
+    <% details = business(resto['id']) %>
+    <p>Photos:</p> <img class="yelp-image" src="<%= details['photos'][1] %>" /><img class="yelp-image" src="<%= details['photos'][2] %>" />
+    <p>Hours:</p>
+    <ul>
+      <% details['hours'][0]['open'].each do |days_open| %>
+        <% if days_open['day'] == 0 %>
+          <p>Monday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 1 %>
+          <p>Tuesday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 2 %>
+          <p>Wednesday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 3 %>
+          <p>Thursday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 4 %>
+          <p>Friday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 5 %>
+          <p>Saturday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 6 %>
+          <p>Sunday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+  <!-- BAR -->
+  <h1>Bar</h1>
+  <% business_array_length = @bar['businesses'].length(); %>
+  <% @bar['businesses'].each do |resto| %>
+    <h3><%= resto['name'] %></h3>
+    <img class="yelp-image" src="<%= resto['image_url'] %>"/>
+    <p>Reviews: <%= resto['review_count'] %></p>
+    <p>Rating: <%= resto['rating'] %></p>
+    <p>Coordinates: <%= resto['coordinates']['latitude'] %>, <%= resto['coordinates']['longitude'] %></p>
+    <p>Location: <%= resto['location']['display_address'][0] %>, <%= resto['location']['display_address'][1] %>, <%= resto['location']['display_address'][2] %></p>
+    <p>Phone: <%= resto['display_phone'] %></p>
+    <p>Price: <%= resto['price'] %></p>
+    <% details = business(resto['id']) %>
+    <p>Photos:</p> <img class="yelp-image" src="<%= details['photos'][1] %>" /><img class="yelp-image" src="<%= details['photos'][2] %>" />
+    <p>Hours:</p>
+    <ul>
+      <% details['hours'][0]['open'].each do |days_open| %>
+        <% if days_open['day'] == 0 %>
+          <p>Monday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 1 %>
+          <p>Tuesday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 2 %>
+          <p>Wednesday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 3 %>
+          <p>Thursday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 4 %>
+          <p>Friday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 5 %>
+          <p>Saturday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% elsif days_open['day'] == 6 %>
+          <p>Sunday: <%= days_open['start'] %> - <%= days_open['end'] %></p>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

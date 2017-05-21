@@ -18,6 +18,9 @@ DEFAULT_LOCATION = "San Francisco, CA"
 SEARCH_LIMIT = 5
 
 class YelpsController < ApplicationController
+  def new
+  end
+
   def bearer_token
 		# Put the url together
 		url = "#{API_HOST}#{TOKEN_PATH}"
@@ -40,10 +43,11 @@ class YelpsController < ApplicationController
 
   def search(term, location)
     url = "#{API_HOST}#{SEARCH_PATH}"
+
     params = {
       term: term,
-      location: 'Vancouver, BC',
-      limit: 50
+      location: "Vancouver, BC",
+      limit: 5
     }
 
     response = HTTP.auth(bearer_token).get(url, params: params)
@@ -56,17 +60,18 @@ class YelpsController < ApplicationController
     response = HTTP.auth(bearer_token).get(url)
     response.parse
   end
+  helper_method :business
 
 	def show
-		@restaurant = search("Brunch", location)
-    business_id = @restaurant['businesses'][0]['id']
-    @business = business(business_id)
-
+    @breakfast = search("Breakfast", location)
+    @lunch = search("Lunch", location)
+    @dinner = search("Dinner", location)
+    @bar = search("Bar", location)
 		@results = {
-			:restaurant => @restaurant,
-      :business => @business
+      :breakfast => @breakfast,
+      :lunch => @lunch,
+      :dinner => @dinner,
+      :bar => @bar
 		}
-
-		render json: @results
 	end
 end
