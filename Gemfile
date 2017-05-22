@@ -47,6 +47,8 @@ gem 'yelp', require: 'yelp'
 gem "js-routes"
 gem "http"
 
+gem "mediawiki_api"
+
 gem 'interactive_editor'
 gem 'awesome_print'
 gem 'hirb'
