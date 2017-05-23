@@ -18,6 +18,7 @@
 //= require jquery.datepair.js
 //= require bootstrap-datepicker
 //= require js-routes
+//= require pace/pace
 //= require fullcalendar
 //= require fullcalendar/gcal
 //= require_tree .

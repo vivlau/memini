@@ -1,5 +1,6 @@
 $(document).ready(function() {
   // initialize input widgets first
+  var schedule_id = $('#calendar').data('schedule')
   $('#datepairExample .time').timepicker({
       'showDuration': true,
       'timeFormat': 'g:ia'
@@ -43,9 +44,7 @@ $(document).ready(function() {
     },
     eventSources: [
 			{
-				url: 'events/index.json',
-        color: 'green',
-        textColor: 'white',
+				url: schedule_id + '/events/index.json',
 				editable: true,
         success: function(response) {
           console.log('this has worked');

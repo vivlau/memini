@@ -37,6 +37,8 @@ gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails', :git
 
 gem 'materialize-sass'
 
+gem 'pace-rails'
+
 gem 'devise'
 gem 'google-api-client'
 gem 'omniauth'

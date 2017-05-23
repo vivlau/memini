@@ -73,8 +73,16 @@
           </li>
         </ul>
     		<button class="previous form-button btn waves-effect waves-light" type="button" name="previous" value="Previous">Previous</button>
-        <%= f.submit class: 'submit form-button btn waves-effect waves-light' %>
+        <%= f.submit class: 'submit form-button btn waves-effect waves-light', id: 'schedule_submit_button' %>
     	<% end %>
     </div>
   <% end %>
+
+  <div id="loady_loader" class="modal">
+    <div class="modal-content">
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
+  </div>
 </div>

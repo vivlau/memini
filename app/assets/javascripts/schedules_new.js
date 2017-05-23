@@ -3,6 +3,7 @@ var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 
 $(document).ready(function() {
+	$('.modal').modal();
 	$(".next").click(function(){
 		if(animating) return false;
 		animating = true;
@@ -72,6 +73,11 @@ $(document).ready(function() {
 			easing: 'easeInOutBack'
 		});
 	});
+
+	$('#schedule_submit_button').on('click', function(event) {
+		// alert('Hellow Vivian, Please Wait...')
+		$('#loady_loader').modal('open');
+	})
 
 	// const startingDate = $('#start_date').val();
 	// const convertStartDate = moment(startingDate, "DD-MMM-YYYY").format('MM-DD-YYYY');

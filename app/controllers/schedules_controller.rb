@@ -84,7 +84,7 @@ class SchedulesController < ApplicationController
 	def save_data_from_yelp_api
     last_datetime = DateTime.parse(@schedule.return_date + " " +@schedule.return_time)
     first_datetime = DateTime.parse(@schedule.departure_date + " " + @schedule.departure_time)
-    limit = (last_datetime - first_datetime).to_i
+    limit = (last_datetime - first_datetime).to_i + 1
     first_day = DateTime.parse(@schedule.departure_date).to_date
     last_day = DateTime.parse(@schedule.return_date).to_date
     location = @schedule.location
