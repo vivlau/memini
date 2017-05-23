@@ -1,7 +1,6 @@
 <div class="yelps-container">
   <!-- BREAKFAST -->
   <h1>Breakfast</h1>
-  <% business_array_length = @breakfast['businesses'].length(); %>
   <% @breakfast['businesses'].each do |resto| %>
     <h3><%= resto['name'] %></h3>
     <img class="yelp-image" src="<%= resto['image_url'] %>"/>
@@ -13,6 +12,9 @@
     <p>Price: <%= resto['price'] %></p>
     <% details = business(resto['id']) %>
     <p>Photos:</p> <img class="yelp-image" src="<%= details['photos'][1] %>" /><img class="yelp-image" src="<%= details['photos'][2] %>" />
+
+    <p>EXAMPLE: <% details['hours'][0]['open'][0]['start'] %></p>
+
     <p>Hours:</p>
     <ul>
       <% details['hours'][0]['open'].each do |days_open| %>
@@ -36,7 +38,6 @@
   <% end %>
   <!-- LUNCH -->
   <h1>Lunch</h1>
-  <% business_array_length = @lunch['businesses'].length(); %>
   <% @lunch['businesses'].each do |resto| %>
     <h3><%= resto['name'] %></h3>
     <img class="yelp-image" src="<%= resto['image_url'] %>"/>
@@ -71,7 +72,6 @@
   <% end %>
   <!-- DINNER -->
   <h1>Dinner</h1>
-  <% business_array_length = @dinner['businesses'].length(); %>
   <% @dinner['businesses'].each do |resto| %>
     <h3><%= resto['name'] %></h3>
     <img class="yelp-image" src="<%= resto['image_url'] %>"/>
@@ -106,7 +106,6 @@
   <% end %>
   <!-- BAR -->
   <h1>Bar</h1>
-  <% business_array_length = @bar['businesses'].length(); %>
   <% @bar['businesses'].each do |resto| %>
     <h3><%= resto['name'] %></h3>
     <img class="yelp-image" src="<%= resto['image_url'] %>"/>

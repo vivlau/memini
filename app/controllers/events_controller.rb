@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
-  def create
+  def index
     @schedule = Schedule.find(params[:schedule_id])
+    @events = Event.where(schedule_id: @schedule.id)
+  end
+
+  def create
+    @schedule = Schedule.find(params[:id])
     @event = Event.new(event_params)
     @event.schedule = @schedule
 
@@ -9,6 +14,11 @@ class EventsController < ApplicationController
     else
       render '/schedules/show'
     end
+  end
+
+  def show
+    @schedule = Schedule.find(params[:schedule_id])
+    @events = Event.where(schedule_id: @schedule.id)
   end
 
   private

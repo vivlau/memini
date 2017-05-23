@@ -1,0 +1,8 @@
+<h1>Wow</h1>
+
+<%= @schedule.id %>
+
+<% @events.each do |event| %>
+  <h3><%= event.event_name %></h3>
+  <p><%=event.schedule_id%></p>
+<% end %>

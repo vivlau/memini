@@ -13,32 +13,32 @@
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">today</i>
-              <%= text_field :event_name, :placeholder => "Visit the Eiffel Tower", :id => "event_name", :class => "validate" %>
+              <%= text_field :event_name, nil, :placeholder => "Visit the Eiffel Tower", :id => "event_name", :class => "validate" %>
               <label for="event_name">Event Name</label>
             </div>
             <div id="datepair">
               <div class="input-field inline col s6 m3">
-                <%= text_field :start_date, :id => 'start_date', :class => 'datepicker', :placeholder => 'Start Date' %>
+                <%= text_field :start_date, nil, :id => 'start_date', :class => 'datepicker', :placeholder => 'Start Date' %>
                 <label for="datepair">Time and Date</label>
               </div>
               <div class="input-field inline col s6 m3" id="datepairExample">
-                <%= text_field :start_time, :id => 'start_time', :class => 'time start', :placeholder => 'Start Time' %>
+                <%= text_field :start_time, nil, :id => 'start_time', :class => 'time start', :placeholder => 'Start Time' %>
               </div>
               <div class="input-field inline col s6 m3" id="datepairExample">
-                <%= text_field :end_date, :id => 'end_date', :class => 'datepicker', :placeholder => 'End Date' %>
+                <%= text_field :end_date, nil, :id => 'end_date', :class => 'datepicker', :placeholder => 'End Date' %>
               </div>
               <div class="input-field inline col s6 m3" id="datepairExample">
-                <%= text_field :end_time, :id => 'end_time', :class => 'time end', :placeholder => 'End Time' %>
+                <%= text_field :end_time, nil, :id => 'end_time', :class => 'time end', :placeholder => 'End Time' %>
               </div>
             </div>
             <div class="input-field col s12">
               <i class="material-icons prefix">location_on</i>
-              <%= text_field :event_location, :placeholder => "Eiffel Tower, Paris, France", :id => "event_location", :class => "validate" %>
+              <%= text_field :event_location, nil, :placeholder => "Eiffel Tower, Paris, France", :id => "event_location", :class => "validate" %>
               <label for="event_location">Location</label>
             </div>
             <div class="input-field col s12">
               <i class="material-icons prefix">info</i>
-              <%= text_area(:event_description, :class => "materialize-textarea", :id => "event_description", :placeholder => "The Eiffel Tower is an iconic landmark in Paris.") %>
+              <%= text_area(:event_description, nil, :class => "materialize-textarea", :id => "event_description", :placeholder => "The Eiffel Tower is an iconic landmark in Paris.") %>
               <label for="event_description">About</label>
             </div>
             <div class="input-field col s12">

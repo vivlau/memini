@@ -12,11 +12,6 @@ BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business i
 TOKEN_PATH = "/oauth2/token"
 GRANT_TYPE = "client_credentials"
 
-DEFAULT_BUSINESS_ID = "yelp-san-francisco"
-DEFAULT_TERM = "dinner"
-DEFAULT_LOCATION = "San Francisco, CA"
-SEARCH_LIMIT = 5
-
 class SchedulesController < ApplicationController
   def index
   end
@@ -30,10 +25,13 @@ class SchedulesController < ApplicationController
     @schedule.user = current_user
     @schedule.save
     save_data_from_yelp_api
+    redirect_to schedule_path(@schedule)
   end
 
   def show
     @event = Event.new
+    @schedule = Schedule.find(params[:id])
+    @events = Event.where(schedule_id: @schedule.id)
   end
 
   def make_google_calendar_reservations
@@ -104,7 +102,7 @@ class SchedulesController < ApplicationController
           day_of_week = event_day.cwday-1
           details = business(b['id'])
           if t == "Breakfast" && details['hours'].present?
-            e.start_time = DateTime.parse(event_day.to_s + " " + (details['hours'][0]['open'][day_of_week]['start'])).strftime("%H:%M")
+            e.start_time = (DateTime.parse(event_day.to_s + " " + ((details['hours'][0]['open'][day_of_week]['start']).split("")).insert(2,*[":"]).join())).strftime("%H:%M")
             e.end_time = (DateTime.parse(event_day.to_s + " " + (details['hours'][0]['open'][day_of_week]['start'])) + 90.minutes).strftime("%H:%M")
           elsif t == "Breakfast"
             e.start_time = DateTime.parse("9:00am").strftime("%H:%M")
@@ -124,7 +122,6 @@ class SchedulesController < ApplicationController
           e.name = b['name']
           e.event_name = e.search_term + " at " + e.name
           e.reviews = b['review_count']
-          e.description = details['snippet_text']
           e.rating = b['rating']
           e.coordinates = (b['coordinates']['latitude']).to_s + ", " + (b['coordinates']['longitude']).to_s
           e.address = (b['location']['display_address'][0]).to_s + ", " + (b['location']['display_address'][1]).to_s + ", " + (b['location']['display_address'][2]).to_s
@@ -138,7 +135,7 @@ class SchedulesController < ApplicationController
           e.save
           puts "#{e.errors.full_messages}"
           i += 1
-          sleep(3)
+          sleep(5)
         end
       end
     end
