@@ -39,6 +39,8 @@ gem 'materialize-sass'
 
 gem 'pace-rails'
 
+gem 'flickraw'
+
 gem 'devise'
 gem 'google-api-client'
 gem 'omniauth'

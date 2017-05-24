@@ -1,9 +1,13 @@
 require "json"
 require "http"
 require "optparse"
+require 'flickraw'
 
 YELP_CLIENT_ID = ENV['YELP_CLIENT_ID']
 YELP_CLIENT_SECRET = ENV['YELP_CLIENT_SECRET']
+
+FLICKR_API_KEY = ENV['FLICKR_API_KEY']
+FLICKR_SECRET = ENV['FLICKR_SECRET']
 
 # Constants, do not change these
 API_HOST = "https://api.yelp.com"
@@ -14,6 +18,7 @@ GRANT_TYPE = "client_credentials"
 
 class SchedulesController < ApplicationController
   def index
+    @schedules = Schedule.where(user_id: current_user.id)
   end
 
   def new
@@ -21,8 +26,21 @@ class SchedulesController < ApplicationController
   end
 
   def create
+    FlickRaw.api_key= FLICKR_API_KEY
+    FlickRaw.shared_secret= FLICKR_SECRET
+
     @schedule = Schedule.new schedule_params
     @schedule.user = current_user
+
+    search_term = schedule_params["location"]
+    list = flickr.photos.search(:text => search_term)
+    photo_id = list[0]['id'].to_s
+    photo_secret = list[0]['secret'].to_s
+    photo_farm = list[0]['farm'].to_s
+    photo_server = list[0]['server'].to_s
+    photo_url = "http://farm" + photo_farm + ".staticflickr.com/" + photo_server + "/" + photo_id + "_" + photo_secret + ".jpg"
+
+    @schedule.photo = photo_url
     @schedule.save
     save_data_from_yelp_api
     redirect_to schedule_path(@schedule)
@@ -35,8 +53,7 @@ class SchedulesController < ApplicationController
   end
 
   def make_google_calendar_reservations
-    @schedule = @cohort.schedules.find_by(slug:
-      params[:slug])
+    @schedule = @cohort.schedules.find_by(slug: params[:slug])
     @calendar = GoogleCalWrapper.new(current_user)
     @calendar.book_rooms(@schedule)
   end

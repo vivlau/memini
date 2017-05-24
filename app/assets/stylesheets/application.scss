@@ -13,14 +13,14 @@
  *= require fullcalendar
  *= require jquery.timepicker.css
  *= require bootstrap-datepicker
- *= require pace/green/pace-theme-loading-bar
+ *= require pace/green/pace-theme-corner-indicator
  *= require_tree .
  *= require_self
  */
 
  @import "materialize/components/color";
 
- $primary-color: #D2D7D3 !default;
+ $primary-color: #2ecc71 !default;
  $secondary-color: #26A65B;
 
  .material-icons {
@@ -32,3 +32,5 @@
  @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
  $header-font-family: 'Montserrat', sans-serif;
+
+ 

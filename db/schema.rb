@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170522012629) do
+ActiveRecord::Schema.define(version: 20170524100555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170522012629) do
     t.string   "departure_time"
     t.string   "return_time"
     t.integer  "user_id"
+    t.string   "photo"
     t.index ["user_id"], name: "index_schedules_on_user_id", using: :btree
   end
 

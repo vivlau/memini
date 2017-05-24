@@ -83,6 +83,7 @@ GEM
     ffi (1.9.18)
     figaro (1.1.1)
       thor (~> 0.14)
+    flickraw (0.9.9)
     fullcalendar-rails (3.2.0.0)
       jquery-rails (>= 4.0.5, < 5.0.0)
       jquery-ui-rails (>= 5.0.2)
@@ -289,6 +290,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   figaro
+  flickraw
   fullcalendar-rails
   google-api-client
   hirb

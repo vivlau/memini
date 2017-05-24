@@ -1,1 +1,27 @@
-<h1> Hello </h1>
+<div class="schedules_container">
+  <h3><%= current_user.first_name %> <%= current_user.last_name %>'s Schedules</h3>
+  <% @schedules.each_slice(2) do |array_of_2_schedules|%>
+    <div class="row">
+      <% array_of_2_schedules.each do |schedule|%>
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-image">
+              <% if (schedule.photo == nil) %>
+                <%= image_tag("purple.jpeg") %>
+              <% else %>
+                <img src="<%= schedule.photo %>">
+              <% end %>
+              <span class="card-title"><%= schedule.location %></span>
+            </div>
+            <div class="card-content">
+              <p><%= schedule.departure_date %> <%= schedule.departure_time %> to <%= schedule.return_date %> <%= schedule.return_time %></p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
