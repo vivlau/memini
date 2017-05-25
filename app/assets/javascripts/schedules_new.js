@@ -77,7 +77,7 @@ $(document).ready(function() {
 	$('#schedule_submit_button').on('click', function(event) {
 		// alert('Hellow Vivian, Please Wait...')
 		$('#loady_loader').modal('open');
-	})
+	});
 
 	// const startingDate = $('#start_date').val();
 	// const convertStartDate = moment(startingDate, "DD-MMM-YYYY").format('MM-DD-YYYY');

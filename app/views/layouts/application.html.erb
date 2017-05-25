@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Fredoka+One" rel="stylesheet">
 
     <%= javascript_include_tag 'application' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
@@ -16,16 +17,16 @@
 
     <nav>
       <div class="nav-wrapper">
-        <%= link_to "Logo", root_path, :class => "brand-logo" %></li>
+        <%= link_to image_tag("logo-white.png", :class => "logo-img"), root_path, :class => "brand-logo" %></li>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-          <li><a href="collapsible.html">JavaScript</a></li>
           <% if user_signed_in? %>
-            <li>Welcome, <%= current_user.first_name %> <%= current_user.last_name %>!</li>
+            <li class="welcome-text">Welcome, <%= current_user.first_name %> <%= current_user.last_name %>!</li>
+            <li><%= link_to "New Itinerary", new_schedule_path %></li>
+            <li><%= link_to "Your Itineraries", schedules_path %></li>
             <li><%= link_to "Signout", destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "Sign In With Google", user_google_oauth2_omniauth_callback_path(provider: :google_oauth2) %></li>
+            <li><%= link_to "Sign In", user_google_oauth2_omniauth_callback_path(provider: :google_oauth2) %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <% end %>
         </ul>
       </div>
