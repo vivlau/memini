@@ -1,6 +1,45 @@
 <div class="schedule-background">
   <div class="calendar-container">
+    <h3 class="calendar-title">Let's go to <span class="title-emphasis"><%= @schedule.location %></span>!</h3>
     <div id="calendar" data-schedule="<%= @schedule.id %>"></div>
+    <div class="collapse-container">
+      <span class="itinerary-title">Itinerary Details</span>
+      <% last_datetime = DateTime.parse(@schedule.return_date + " " +@schedule.return_time) %>
+      <% first_datetime = DateTime.parse(@schedule.departure_date + " " + @schedule.departure_time) %>
+      <% limit = (last_datetime - first_datetime).to_i + 1 %>
+      <% first_day = DateTime.parse(@schedule.departure_date).to_date %>
+      <% last_day = DateTime.parse(@schedule.return_date).to_date %>
+      <% i = 0 %>
+      <% while i < limit %>
+        <% event_day = first_day + i %>
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header"><i class="material-icons">wb_sunny</i><span class="collapsible-title"><%= event_day %></span></div>
+              <div class="collapsible-body col s12">
+                <div class="row">
+                  <% Event.where(start_date: event_day).each do |event| %>
+                      <div class="col s12 m6">
+                        <div class="card">
+                          <div class="card-image">
+                            <img src="<%= eval(event.images)[0] %>" class="custom-photo"/>
+                            <span class="card-title"><%= event.event_name %></span>
+                          </div>
+                          <div class="card-content wew">
+                            <h5 class="time-title"><p><%= DateTime.parse(event.start_time).strftime('%I:%M%p') %> to <%= DateTime.parse(event.end_time).strftime('%I:%M%p') %></p></h5>
+                            <h5 class="list-title">Address:</h5><p> <%= event.address %></p>
+                            <h5 class="list-title">Phone:</h5> <p><%= event.phone %></p>
+                            <h5 class="list-title">Category:</h5> <p><%= eval(event.categories)[0]["title"] %></p>
+                          </div>
+                        </div>
+                      </div>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+        </ul>
+        <% i += 1 %>
+      <% end %>
+    </div>
   </div>
 </div>
 
@@ -53,3 +92,18 @@
     </div>
   </div>
 </div>
+
+<div id="event-modal" class="modal">
+    <div class="modal-content">
+      <h4 id="modalHeader">Modal Header</h4>
+      <h5>Event begins at <span id="startTime"></span></h5><br>
+      <div>
+        <span class="modal-list">Address: </span><span id="eventAddress"></span>
+      </div>
+      <div>
+        <span class="modal-list">Phone: </span><span id="eventPhone"></span>
+      </div>
+      <br>
+      <p><strong><a id="eventLink" href="" target="_blank">Read More</a></strong></p>
+    </div>
+  </div>

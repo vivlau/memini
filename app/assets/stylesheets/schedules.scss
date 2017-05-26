@@ -1,3 +1,5 @@
+$primary-color: #2ecc71 !default;
+$secondary-color: #26A65B;
 
 .schedule-background {
   height: 100%;
@@ -11,7 +13,16 @@
 
 .calendar-container {
   padding: 50px;
-  margin-bottom: 20px;
+  padding-top: 120px;
+}
+
+.calendar-title {
+  color: black;
+  font-family: "Comfortaa";
+}
+
+.title-emphasis {
+  color: $primary-color;
 }
 
 #calendar {
@@ -66,4 +77,62 @@
 .fs-title {
   color: white;
   padding-bottom: 20px;
+}
+
+#event-modal {
+  padding: 20px;
+}
+
+#modalHeader {
+  font-family: "Comfortaa";
+  color: $primary-color;
+}
+
+.collapse-container {
+  margin-top: 40px;
+}
+
+.modal-list {
+  font-size: 20px;
+}
+
+.itinerary-title {
+  font-family: "Comfortaa";
+  color: black;
+  font-size: 25px;
+}
+
+.collapsible-title {
+  color: $primary-color;
+  font-size: 18px;
+}
+
+.collapsible-body {
+  color: black;
+}
+
+.collapsible-card {
+  width: 100%;
+}
+
+.card-image {
+  height: 400px;
+  overflow: hidden;
+}
+
+.custom-photo {
+  height: 100%;
+  object-fit: cover;
+}
+
+.list-title {
+  font-size: 20px;
+}
+
+.time-title {
+  color: $primary-color;
+}
+
+.wew {
+  min-height: 330px;
 }

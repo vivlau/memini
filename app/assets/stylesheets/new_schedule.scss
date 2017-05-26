@@ -1,5 +1,5 @@
-/*custom font*/
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
+$primary-color: #2ecc71 !default;
+$secondary-color: #26A65B;
 
 /*basic reset*/
 * {margin: 0; padding: 0;}
@@ -62,10 +62,10 @@ body {
 }
 /*headings*/
 .fs-title {
-	font-size: 20px;
-	text-transform: uppercase;
+	font-size: 30px;
 	color: #2C3E50;
-	margin-bottom: 10px;
+	margin-bottom: 25px;
+	font-family: "Comfortaa";
 }
 .fs-subtitle {
 	font-weight: normal;
@@ -92,14 +92,14 @@ body {
 #progressbar li:before {
 	content: counter(step);
 	counter-increment: step;
-	height: 40px;
-	width: 40px;
-	line-height: 40px;
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
 	display: block;
 	font-size: 20px;
 	color: #333;
 	background: white;
-	border-radius: 20px;
+	border-radius: 25px;
 	margin: 0 auto 5px auto;
 }
 /*progressbar connectors*/
@@ -126,7 +126,7 @@ body {
 
 .form-button {
 	margin: 10px;
-	margin-top: 20px;
+	margin-top: 30px;
 }
 
 .travel-form {
@@ -146,10 +146,29 @@ body {
 #msform {
 	fieldset {
 		margin: 0;
+		margin-top: 50px;
 		width: 100%;
 		height: 100%;
 		padding: 0;
 	}
+}
+
+.choices {
+	background-color: white;
+	margin: 10px;
+	padding: 10px;
+	text-align: left;
+	border-radius: 5px;
+}
+
+.radio-button-label {
+	color: $primary-color;
+	font-family: "Comfortaa";
+}
+
+.description-text {
+	color: black;
+	margin-left: 10px;
 }
 
 .traveller_type {
@@ -166,5 +185,13 @@ body {
 }
 
 #loady-loader {
+	top: 30%;
 	padding: 50px;
+}
+
+.loady-text {
+	font-family: "Comfortaa";
+	color: $primary-color;
+	font-size: 20px;
+	margin-bottom: 20px;
 }

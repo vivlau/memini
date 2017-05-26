@@ -31,14 +31,13 @@ class SchedulesController < ApplicationController
 
     @schedule = Schedule.new schedule_params
     @schedule.user = current_user
-    num = rand(1..2)
 
     search_term = schedule_params["location"]
-    list = flickr.photos.search(:text => search_term + "city", :has_geo => 0)
-    photo_id = list[num]['id'].to_s
-    photo_secret = list[num]['secret'].to_s
-    photo_farm = list[num]['farm'].to_s
-    photo_server = list[num]['server'].to_s
+    list = flickr.photos.search(:text => search_term + "landscape", :has_geo => 0)
+    photo_id = list[0]['id'].to_s
+    photo_secret = list[0]['secret'].to_s
+    photo_farm = list[0]['farm'].to_s
+    photo_server = list[0]['server'].to_s
     photo_url = "http://farm" + photo_farm + ".staticflickr.com/" + photo_server + "/" + photo_id + "_" + photo_secret + ".jpg"
 
     @schedule.photo = photo_url
@@ -51,6 +50,12 @@ class SchedulesController < ApplicationController
     @event = Event.new
     @schedule = Schedule.find(params[:id])
     @events = Event.where(schedule_id: @schedule.id)
+  end
+
+  def destroy
+    @schedule = Schedule.find(params[:id])
+    @schedule.destroy
+    redirect_to schedules_path, notice: 'Schedule Deleted'
   end
 
   def make_google_calendar_reservations
@@ -124,14 +129,14 @@ class SchedulesController < ApplicationController
             e.start_time = (DateTime.parse(event_day.to_s + " " + ((details['hours'][0]['open'][day_of_week]['start']).split("")).insert(2,*[":"]).join())).strftime("%H:%M")
             e.end_time = (DateTime.parse(event_day.to_s + " " + (details['hours'][0]['open'][day_of_week]['start'])) + 90.minutes).strftime("%H:%M")
           elsif t == "Breakfast"
-            e.start_time = DateTime.parse("9:00am").strftime("%H:%M")
-            e.end_time = (DateTime.parse("9:00am") + 90.minutes).strftime("%H:%M")
+            e.start_time = DateTime.parse("8:00am").strftime("%H:%M")
+            e.end_time = (DateTime.parse("8:00am") + 90.minutes).strftime("%H:%M")
           elsif t == "Lunch"
-            e.start_time = DateTime.parse("12:00pm").strftime("%H:%M")
-            e.end_time = (DateTime.parse("12:00pm") + 2.hours).strftime("%H:%M")
+            e.start_time = DateTime.parse("12:30pm").strftime("%H:%M")
+            e.end_time = (DateTime.parse("12:30pm") + 90.minutes).strftime("%H:%M")
           elsif t == "Dinner"
-            e.start_time = DateTime.parse("6:00pm").strftime("%H:%M")
-            e.end_time = (DateTime.parse("6:00pm") + 2.hours).strftime("%H:%M")
+            e.start_time = DateTime.parse("6:30pm").strftime("%H:%M")
+            e.end_time = (DateTime.parse("6:30pm") + 2.hours).strftime("%H:%M")
           elsif t == "Bar"
             e.start_time = DateTime.parse("9:00pm").strftime("%H:%M")
             e.end_time = (DateTime.parse("9:00pm") + 2.hours).strftime("%H:%M")

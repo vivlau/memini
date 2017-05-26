@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $('ul.tabs').tabs();
   // initialize input widgets first
   var schedule_id = $('#calendar').data('schedule')
   $('#datepairExample .time').timepicker({
@@ -18,11 +19,24 @@ $(document).ready(function() {
   $('select').material_select();
   $('#calendar').fullCalendar({
     Boolean, default: true,
+    customButtons: {
+        createEvent: {
+            text: 'Create Event',
+            click: function() {
+              $(this).wrap('<a href="#modal1"></a>');
+              $('#modal1').modal({
+                 show:true,
+                 backdrop:'static'
+              });
+              $('#modal1').modal();
+            }
+        }
+    },
     // Header
     header: {
-      left: 'prev,next today',
+      left: 'prev,next createEvent',
       center: 'title',
-      right: 'month,agendaWeek,agendaDay'
+      right: 'today month,agendaWeek,agendaDay'
     },
     selectable: true,
     selectHelper: true,
@@ -54,37 +68,28 @@ $(document).ready(function() {
         },
 			}
     ],
-    dayClick: function (date, jsEvent, view) {
-      // $('#modalTitle').html(event.title);
-      // $('#modalBody').html(event.description);
-      // $('#eventUrl').attr('href',event.url);
-      // console.log(date);
-      // console.log(date.toISOString());
-      // var clickedDay = date.format();
-      // // var abc = prompt('Enter Title');
-      // var starting = `${date.format()}`;
-      // var ending = `${date.format()}`;
-      // var newEvent = new Object();
-      // // newEvent.title = abc;
-      // newEvent.start = starting;
-      // newEvent.end = ending;
-      // newEvent.allDay = false;
-      // $('#calendar').fullCalendar('renderEvent', newEvent);
+    eventClick: function(event) {
+      $(this).wrap('<a href="#event-modal"></a>');
+      $("#modalHeader").html(event.title);
+      $("#startTime").html(moment(event.start).format('MMMM Do YYYY, h:mm a'));
+      $("#eventAddress").html(event.address);
+      $("#eventPhone").html(event.phone);
+      $("#eventRating").html(event.rating);
+      $("#eventPrice").html(event.price);
+      $('#event-modal img').attr('src', $(this).attr(event.images[0]));
+      $("#eventImage").attr('src', event.images[0]);
+      $("#eventLink").attr('href', event.url);
+      $("#eventContent").dialog({ modal: true, title: event.title, width:350});
+      $('#event-modal').modal({
+         show:true,
+         backdrop:'static'
+      });
+      $('#event-modal').modal();
     }
   });
   // $('.fc-highlight').addClass("modal-trigger");
   // $('.fc-highlight').attr('onclick', "location.href='#modal1'")
   // $('#fullCalModal').modal();
-  $('.fc-day-number').each(function() {
-    // Get current day
-    var day = parseInt($(this).html());
-    $(this).html('<a class="modal-trigger" href="#modal1"><i class="tiny material-icons">add</i></a> ' + day);
-    $('#modal1').modal({
-       show:true,
-       backdrop:'static'
-    });
-    $('#modal1').modal();
-  });
   $('#submitButton').on('click', function(e){
     // We don't want this to act as a link so cancel the link action
     e.preventDefault();

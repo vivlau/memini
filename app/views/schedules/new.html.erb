@@ -3,9 +3,9 @@
     <%= form_for @schedule do |f| %>
     	<!-- progressbar -->
     	<ul id="progressbar">
-    		<li class="active">Account Setup</li>
-    		<li>Social Profiles</li>
-    		<li>Personal Details</li>
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
     	</ul>
     	<!-- fieldsets -->
     	<%= field_set_tag do %>
@@ -46,32 +46,31 @@
     	<% end %>
     	<%= field_set_tag do %>
     		<h2 class="fs-title">What kind of traveller are you?</h2>
-        <ul class="checkbox traveller_type">
-          <li>
-            <%= f.check_box :traveller_type, :id => 'foodie', :value => '1' %>
-            <label for="foodie">I love food and want to revolve my trip around trying the best bites a place has to offer!</label>
-          </li>
-          <li>
-            <%= f.check_box :traveller_type, :id => 'cafe', :value => '2' %>
-            <label for="cafe">I need a lot of down time at cafes. Find me cozy places to stop at.</label>
-          </li>
-          <li>
-            <%= f.check_box :traveller_type, :id => 'sleep-in', :value => '3' %>
-            <label for="sleep-in">I'm not a morning person. Let me sleep in.</label>
-          </li>
-          <li>
-            <%= f.check_box :traveller_type, :id => 'night-owl', :value => '4' %>
-            <label for="night-owl">I love partying till the wee hours! Find me things to do all through the night!</label>
-          </li>
-          <li>
-            <%= f.check_box :traveller_type, :id => 'family-friendly', :value => '5' %>
-            <label for="family-friendly">I have kids with me. Take me to more family-friendly places.</label>
-          </li>
-          <li>
-            <%= f.check_box :traveller_type, :id => 'everything', :value => '6' %>
-            <label for="everything">I need to try everything! Pack my schedule to the brim!</label>
-          </li>
-        </ul>
+        <div class="choices">
+          <%= f.radio_button :traveller_type, "standard" %>
+          <%= f.label :traveller_type_standard, "Standard:", :class => "radio-button-label" %>
+          <span class="description-text">You want to see a destination's top attractions, so we'll take you to all the landmarks!</span>
+        </div>
+        <div class="choices">
+          <%= f.radio_button :traveller_type, "foodie" %>
+          <%= f.label :traveller_type_foodie, "Foodie:", :class => "radio-button-label" %>
+          <span class="description-text">Try the best in culinary arts a destination has to offer!</span>
+        </div>
+        <div class="choices">
+          <%= f.radio_button :traveller_type, "relaxation" %>
+          <%= f.label :traveller_type_relaxation, "Relaxation:", :class => "radio-button-label" %>
+          <span class="description-text">Take it easy and enjoy a leisurely trip. We'll take you to spas and cafes for proper relaxation.</span>
+        </div>
+        <div class="choices">
+          <%= f.radio_button :traveller_type, "museum" %>
+          <%= f.label :traveller_type_museum, "Museum:", :class => "radio-button-label" %>
+          <span class="description-text">Check out museums, art galleries, and find new cultural experiences.</span>
+        </div>
+        <div class="choices">
+          <%= f.radio_button :traveller_type, "adventure" %>
+          <%= f.label :traveller_type_active, "Adventure:", :class => "radio-button-label" %>
+          <span class="description-text">If you love being active and exploring the outdoors, we can find plenty of activities for you!</span>
+        </div>
     		<button class="previous form-button btn waves-effect waves-light" type="button" name="previous" value="Previous">Previous</button>
         <%= f.submit class: 'submit form-button btn waves-effect waves-light', id: 'schedule_submit_button' %>
     	<% end %>
@@ -80,7 +79,7 @@
 
   <div id="loady_loader" class="modal valign-wrapper">
     <div class="modal-content">
-      Wew
+      <p class="loady-text">Please be patient while we make an itinerary for you...</p>
       <div class="progress">
         <div class="indeterminate"></div>
       </div>

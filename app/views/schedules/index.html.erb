@@ -1,5 +1,5 @@
 <div class="schedules_container">
-  <h3><%= current_user.first_name %> <%= current_user.last_name %>'s Itineraries</h3>
+  <h3 class="schedules-title"><%= current_user.first_name %> <%= current_user.last_name %>'s Itineraries</h3>
   <% if @schedules.present? == false %>
     <div class="comment-chunk valign-wrapper">
       <%= image_tag("logo-green.png", :class => "emphasis-logo") %>
@@ -24,6 +24,9 @@
               </div>
               <div class="card-action">
                 <%= link_to "Itinerary Details", schedule_path(schedule.id) %>
+                <%= link_to 'Delete Itinerary', schedule_path(schedule.id),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
               </div>
             </div>
           </div>
