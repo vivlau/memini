@@ -1,24 +1,10 @@
-# README
+![](http://i.imgur.com/E8gI0jJ.png?2)
+# Memini 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+memini is a travel application that allows users to automate the process of researching a destination and scheduling a comprehensive itinerary.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Technologies:
+* Ruby on Rails
+* jQuery
+* Yelp API
+* Flickr API
